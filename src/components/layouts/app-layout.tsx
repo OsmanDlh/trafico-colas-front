@@ -1,7 +1,7 @@
 import { NavLink, Outlet } from 'react-router-dom'
 
 import AppFooter from '@/components/layouts/app-footer'
-import { LOGO_SRC, PRODUCT_NAME, UNIVERSITY_SHORT } from '@/lib/project-info'
+import { LOGO_SRC, UNIVERSITY_SHORT } from '@/lib/project-info'
 import { cn } from '@/lib/utils'
 import { useHealth } from '@/services/health.service'
 
@@ -33,14 +33,6 @@ const AppLayout = () => {
                 alt={`Logo ${UNIVERSITY_SHORT}`}
                 className="h-9 w-auto shrink-0 object-contain sm:h-10"
               />
-              <div className="min-w-0">
-                <p className="font-display text-foreground truncate text-lg leading-tight font-bold">
-                  {PRODUCT_NAME}
-                </p>
-                <p className="text-muted-foreground hidden truncate text-xs sm:block">
-                  Proyecto {UNIVERSITY_SHORT}
-                </p>
-              </div>
             </NavLink>
             <nav className="hidden items-center gap-1 lg:flex">
               {navItems.map((item) => (

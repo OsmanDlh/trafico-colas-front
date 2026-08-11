@@ -33,7 +33,7 @@ const CostResultView = ({ result }: CostResultViewProps) => {
 
   return (
     <ResultShell title="Mejor configuración" badge={modelLabel(result.model)} badgeTone="info">
-      <div className="from-secondary/40 via-secondary/10 to-muted grid gap-4 rounded-2xl bg-gradient-to-br p-5 sm:grid-cols-3">
+      <div className="from-secondary/40 via-secondary/10 to-muted grid gap-4 rounded-2xlp-5 sm:grid-cols-3">
         <div>
           <p className="text-muted-foreground text-xs uppercase">Personas recomendadas</p>
           <p className="text-foreground text-3xl font-bold tabular-nums">{best.s}</p>

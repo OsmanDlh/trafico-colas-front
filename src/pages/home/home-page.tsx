@@ -9,7 +9,6 @@ import { Link } from 'react-router-dom'
 import { buttonVariants } from '@/components/ui/button-variants'
 import { Card, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import {
-  LOGO_SRC,
   PRODUCT_NAME,
   TEAM_MEMBERS,
   UNIVERSITY_NAME,
@@ -65,7 +64,7 @@ const HomePage = () => {
             </h1>
             <p className="text-primary-foreground/80 text-base md:text-lg">
               {PRODUCT_NAME} te dice, en minutos, si tu negocio necesita más personal, más capacidad
-              o solo ajustar el ritmo. Desarrollado en la {UNIVERSITY_NAME}.
+              o solo ajustar el ritmo.
             </p>
             <div className="flex flex-wrap gap-3 pt-2">
               <Link to="/models" className={cn(buttonVariants({ size: 'lg' }), 'min-w-40')}>
@@ -81,14 +80,6 @@ const HomePage = () => {
                 Ver recomendaciones
               </Link>
             </div>
-          </div>
-
-          <div className="bg-card/95 hidden rounded-2xl p-5 shadow-lg lg:block">
-            <img
-              src={LOGO_SRC}
-              alt={`Logo ${UNIVERSITY_NAME}`}
-              className="mx-auto h-20 w-auto object-contain"
-            />
           </div>
         </div>
       </section>

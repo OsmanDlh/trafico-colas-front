@@ -1,8 +1,6 @@
 import {
   LOGO_SRC,
-  PRODUCT_NAME,
   TEAM_MEMBERS,
-  UNIVERSITY_NAME,
   UNIVERSITY_SHORT,
 } from '@/lib/project-info'
 
@@ -16,10 +14,7 @@ const AppFooter = () => {
             alt={`Logo ${UNIVERSITY_SHORT}`}
             className="h-12 w-auto object-contain md:h-14"
           />
-          <div>
-            <p className="font-display text-foreground text-sm font-bold">{PRODUCT_NAME}</p>
-            <p className="text-muted-foreground text-xs">{UNIVERSITY_NAME}</p>
-          </div>
+
         </div>
 
         <div className="md:text-right">
