@@ -1,0 +1,36 @@
+:root {
+  /* Brand: #2E354E primary · #FCE03A secondary */
+  --background: #f5f6f9;
+  --foreground: #2e354e;
+
+  --primary: #2e354e;
+  --primary-foreground: #ffffff;
+
+  --secondary: #fce03a;
+  --secondary-foreground: #2e354e;
+
+  --muted: #e8eaf0;
+  --muted-foreground: #5c647a;
+
+  --accent: #fff8c4;
+  --accent-foreground: #2e354e;
+
+  --destructive: #c62828;
+  --destructive-foreground: #ffffff;
+
+  --card: #ffffff;
+  --card-foreground: #2e354e;
+
+  --border: #d5d9e4;
+  --input: #d5d9e4;
+  --ring: #fce03a;
+
+  --success: #1b7f4e;
+  --success-soft: #e6f6ee;
+  --warning: #9a6b00;
+  --warning-soft: #fff4cc;
+  --danger-soft: #fde8e8;
+
+  --radius: 0.75rem;
+  --brand-glow: color-mix(in srgb, #fce03a 28%, transparent);
+}
