@@ -16,7 +16,7 @@ const shortTitles: Record<ModelName, string> = {
 }
 
 const LandingGuide = () => {
-  const [active, setActive] = useState<ModelName>('MMSK')
+  const [active, setActive] = useState<ModelName>('MM1')
   const guide = MODEL_GUIDES[active]
 
   return (
@@ -153,7 +153,7 @@ const LandingGuide = () => {
               </ul>
             </div>
             <Link
-              to="/models"
+              to={`/models?model=${active}`}
               className={cn(
                 buttonVariants({ size: 'lg' }),
                 'mt-2 w-full sm:w-auto',

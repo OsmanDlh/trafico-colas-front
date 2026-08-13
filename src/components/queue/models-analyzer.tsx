@@ -1,7 +1,6 @@
 import { zodResolver } from '@hookform/resolvers/zod'
-import { useState } from 'react'
 import toast from 'react-hot-toast'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useSearchParams } from 'react-router-dom'
 
 import { MODEL_RESULT_MODAL_PATH } from '@/components/queue/model-result-modal'
 import Form from '@/components/shared/form'
@@ -64,10 +63,22 @@ const modelTabs: {
   },
 ]
 
+const MODEL_IDS = new Set<string>(modelTabs.map((tab) => tab.id))
+
+const parseModelParam = (value: string | null): ModelName | null => {
+  if (value && MODEL_IDS.has(value)) return value as ModelName
+  return null
+}
+
 const ModelsAnalyzer = () => {
   const navigate = useNavigate()
-  const [activeModel, setActiveModel] = useState<ModelName>('MMSK')
+  const [searchParams, setSearchParams] = useSearchParams()
+  const activeModel = parseModelParam(searchParams.get('model')) ?? 'MMSK'
   const setResult = useModelResultStore((state) => state.setResult)
+
+  const setActiveModel = (model: ModelName) => {
+    setSearchParams({ model }, { replace: true })
+  }
 
   const mm1 = useAnalyzeMm1()
   const mm1k = useAnalyzeMm1k()
@@ -79,7 +90,7 @@ const ModelsAnalyzer = () => {
   const onSuccess = (data: ModelResponse) => {
     setResult(data)
     toast.success('Cálculo listo')
-    void navigate(MODEL_RESULT_MODAL_PATH)
+    void navigate({ pathname: MODEL_RESULT_MODAL_PATH, search: `?model=${activeModel}` })
   }
 
   const guardAndRun = (
