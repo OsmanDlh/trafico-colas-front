@@ -15,9 +15,11 @@ import { buildMetricItems } from '@/utils/queue-metrics'
 
 type ModelResultViewProps = {
   result: ModelResponse | null
+  /** Sin marco de tarjeta (ideal dentro de un modal) */
+  embedded?: boolean
 }
 
-const ModelResultView = ({ result }: ModelResultViewProps) => {
+const ModelResultView = ({ result, embedded = false }: ModelResultViewProps) => {
   const gaugeOption = useMemo(
     () => (result ? utilizationGaugeOption(result.metrics.rho) : null),
     [result],
@@ -31,8 +33,8 @@ const ModelResultView = ({ result }: ModelResultViewProps) => {
   if (!result || !gaugeOption || !waitOption) {
     return (
       <EmptyState
-        title="Aquí verás el panorama de tu operación"
-        description="Elige cómo atiendes, completa los números y pulsa el botón. Te explicamos ocupación, esperas y clientes que se quedan fuera."
+        title="Aún no hay un cálculo para mostrar"
+        description="Cierra este panel, completa los números de tu negocio y pulsa el botón. Aquí verás ocupación, esperas y clientes que se quedan fuera."
       />
     )
   }
@@ -51,6 +53,7 @@ const ModelResultView = ({ result }: ModelResultViewProps) => {
       title={modelLabel(result.model)}
       badge={stability.is_stable ? 'Sistema estable' : 'Inestable'}
       badgeTone={stability.is_stable ? 'ok' : 'unstable'}
+      className={embedded ? 'border-0 bg-transparent p-0 shadow-none' : undefined}
     >
       <p className="text-muted-foreground text-sm">{stability.note}</p>
 

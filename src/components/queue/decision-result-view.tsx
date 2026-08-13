@@ -23,11 +23,11 @@ import { statusToTone } from '@/utils/status-tone'
 type DecisionResultViewProps = {
   kind: 'recommend' | 'capacity' | 'health' | 'compare'
   result:
-    | RecommendModelResponse
-    | CapacityPlanningResponse
-    | NetworkHealthResponse
-    | CompareScenariosResponse
-    | null
+  | RecommendModelResponse
+  | CapacityPlanningResponse
+  | NetworkHealthResponse
+  | CompareScenariosResponse
+  | null
 }
 
 const DecisionResultView = ({ kind, result }: DecisionResultViewProps) => {
@@ -137,7 +137,7 @@ const CapacityResult = ({ result }: { result: CapacityPlanningResponse }) => {
     >
       <p className="text-muted-foreground text-sm">{result.note}</p>
       {recommended ? (
-        <div className="from-secondary/30 to-muted grid gap-4 rounded-2xl bg-gradient-to-br p-5 sm:grid-cols-2">
+        <div className=" grid gap-4 rounded-2xl bg- linear-to-br p-5 sm:grid-cols-2">
           <div>
             <p className="text-muted-foreground text-xs uppercase">Personas necesarias</p>
             <p className="text-3xl font-bold tabular-nums">{recommended.s ?? '—'}</p>
@@ -263,9 +263,8 @@ const CompareResult = ({ result }: { result: CompareScenariosResponse }) => {
         {result.results.map((scenario, index) => (
           <div
             key={`${scenario.name}-${index}`}
-            className={`rounded-xl border p-4 ${
-              scenario.name === result.winner ? 'border-secondary bg-secondary/20' : 'border-border'
-            }`}
+            className={`rounded-xl border p-4 ${scenario.name === result.winner ? 'border-secondary bg-secondary/20' : 'border-border'
+              }`}
           >
             <div className="mb-1 flex flex-wrap items-center justify-between gap-2">
               <p className="font-semibold">

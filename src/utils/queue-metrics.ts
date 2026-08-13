@@ -23,38 +23,38 @@ const buildMetricItems = (metrics: MetricsLike): MetricItem[] => {
   const items: MetricItem[] = [
     {
       key: 'rho',
-      label: 'Utilización (ρ)',
-      hint: 'Qué tan ocupado está cada servidor',
+      label: 'Qué tan ocupado está el personal',
+      hint: 'Cerca de 100% = casi no dan abasto. Ideal suele estar por debajo de ~70–80%.',
       value: formatPercent(metrics.rho),
     },
     {
       key: 'L',
-      label: 'En el sistema (L)',
-      hint: 'Clientes esperados (en cola + siendo atendidos)',
+      label: 'Personas en el local (promedio)',
+      hint: 'Incluye quienes esperan y quienes ya están siendo atendidos.',
       value: formatNumber(metrics.L, 3),
     },
     {
       key: 'Lq',
-      label: 'En cola (Lq)',
-      hint: 'Clientes esperando a ser atendidos',
+      label: 'Personas solo esperando (promedio)',
+      hint: 'La fila antes de ser atendidos.',
       value: formatNumber(metrics.Lq, 3),
     },
     {
       key: 'W',
-      label: 'Tiempo total (W)',
-      hint: 'Tiempo medio desde llegada hasta salida',
+      label: 'Tiempo total del cliente',
+      hint: 'Desde que llega hasta que se va (espera + atención), en horas.',
       value: formatNumber(metrics.W, 4),
     },
     {
       key: 'Wq',
-      label: 'Tiempo en cola (Wq)',
-      hint: 'Tiempo medio solo esperando',
+      label: 'Tiempo solo en la fila',
+      hint: 'Cuánto espera antes de que lo atiendan, en horas.',
       value: formatNumber(metrics.Wq, 4),
     },
     {
       key: 'P0',
-      label: 'Sistema vacío (P0)',
-      hint: 'Probabilidad de no tener clientes',
+      label: 'Probabilidad de no tener clientes',
+      hint: 'Qué tan seguido el negocio está “vacío” / sin nadie dentro.',
       value: formatPercent(metrics.P0),
     },
   ]
@@ -62,8 +62,8 @@ const buildMetricItems = (metrics: MetricsLike): MetricItem[] => {
   if (metrics.PK != null) {
     items.push({
       key: 'PK',
-      label: 'Bloqueo (PK)',
-      hint: 'Probabilidad de que un cliente no entre',
+      label: 'Clientes que se quedan fuera',
+      hint: 'Porcentaje que no entra porque el cupo está lleno.',
       value: formatPercent(metrics.PK),
     })
   }
@@ -71,8 +71,8 @@ const buildMetricItems = (metrics: MetricsLike): MetricItem[] => {
   if (metrics.lambda_effective != null) {
     items.push({
       key: 'lambda_e',
-      label: 'Llegadas efectivas (λe)',
-      hint: 'Tasa real de clientes que sí entran',
+      label: 'Clientes que sí entran por hora',
+      hint: 'Llegadas reales después de descontar a quienes no caben.',
       value: formatNumber(metrics.lambda_effective, 3),
     })
   }
